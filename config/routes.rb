@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :project_updates
+  resources :projects
   resources :learning_log_updates
   resources :learning_logs
   resources :articles

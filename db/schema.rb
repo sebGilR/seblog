@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_220751) do
+ActiveRecord::Schema.define(version: 2021_10_26_224654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,26 @@ ActiveRecord::Schema.define(version: 2021_10_26_220751) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status"
     t.datetime "published_at"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_learning_logs_on_project_id"
+  end
+
+  create_table "project_updates", force: :cascade do |t|
+    t.text "description"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_updates_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "demo_link"
+    t.string "repo_link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +79,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_220751) do
 
   add_foreign_key "articles", "learning_logs"
   add_foreign_key "learning_log_updates", "learning_logs"
+  add_foreign_key "learning_logs", "projects"
+  add_foreign_key "project_updates", "projects"
 end

@@ -17,7 +17,7 @@ As an admin I can :
 - Search for articles
 - Filter articles by category
 - Approve/reject article comments
-- Link articles to learning projects [MVP]
+- Link articles to learning projects [MVP] ✓
 - Tick a checkbox to share to [linkedin](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin)
 
 As an anonymous user I can:
@@ -50,10 +50,10 @@ As a user I can:
 **Projects**
 As an admin user I can:
 
-- Perform CRUD operations on projects [MVP]
-- Draft/Publish projects [MVP]
-- Link learning logs to projects [MVP]
-- Add project updates [MVP]
+- Perform CRUD operations on projects [MVP] ✓
+- Draft/Publish projects [MVP] ✓
+- Link learning logs to projects [MVP] ✓
+- Add project updates [MVP] ✓
 - Tick a checkbox to share to [linkedin](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin)
 
 As a user I can:

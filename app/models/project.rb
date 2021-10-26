@@ -1,8 +1,9 @@
-class LearningLog < ApplicationRecord
-  has_many :articles
-  has_many :updates, class_name: 'LearningLogUpdate', dependent: :destroy
-  validates_presence_of :title, :description
+class Project < ApplicationRecord
+  has_many :updates, class_name: 'ProjectUpdate', dependent: :destroy
+  has_many :learning_logs
 
+  validates :name, presence: true
+  
   after_initialize :set_default_status, :if => :new_record?
 
   enum status: [:draft, :published]
