@@ -60,3 +60,7 @@ As a user I can:
 - View a single project [MVP]
 - See learning logs associated to projects [MVP]
 - See project updates [MVP]
+
+### Might use these
+
+- https://www.npmjs.com/package/react-aws-s3
