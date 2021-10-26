@@ -4,8 +4,6 @@ The backend for my website
 
 ## User Stories
 
-All of the below objects can be shared to linkedin with a checkbox
-
 **Blog API**
 As an admin I can :
 
