@@ -29,12 +29,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'pry-byebug'
+  gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 2.19"
+  gem "database_cleaner-active_record", "~> 2.0"
 end
 
 group :test do
   gem "rspec-rails", "~> 5.0"
-  gem "faker", "~> 2.19"
-  gem "database_cleaner-active_record", "~> 2.0"
 end
 
 group :development do
@@ -47,6 +48,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.8"
-gem "pundit", "~> 2.1"
 gem "elasticsearch-model", "~> 7.2"
 gem "elasticsearch-rails", "~> 7.2"
+
