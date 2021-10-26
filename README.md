@@ -35,7 +35,7 @@ As an admin I can:
 
 - Perform CRUD operations on learning logs [MVP] ✓
 - Draft/publish logs [MVP] ✓
-- Post updates for a learning log [MVP]
+- Post updates for a learning log [MVP] ✓
 - Flag updates as blockers or milestones
 - Get suggestions to link articles based on title keywords
 - Tick a checkbox to share to [linkedin](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_175047) do
+ActiveRecord::Schema.define(version: 2021_10_26_220751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2021_10_26_175047) do
     t.datetime "published_at"
     t.bigint "learning_log_id"
     t.index ["learning_log_id"], name: "index_articles_on_learning_log_id"
+  end
+
+  create_table "learning_log_updates", force: :cascade do |t|
+    t.text "description"
+    t.bigint "learning_log_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["learning_log_id"], name: "index_learning_log_updates_on_learning_log_id"
   end
 
   create_table "learning_logs", force: :cascade do |t|
@@ -50,4 +58,5 @@ ActiveRecord::Schema.define(version: 2021_10_26_175047) do
   end
 
   add_foreign_key "articles", "learning_logs"
+  add_foreign_key "learning_log_updates", "learning_logs"
 end

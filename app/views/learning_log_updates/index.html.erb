@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Learning Log Updates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Learning log</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @learning_log_updates.each do |learning_log_update| %>
+      <tr>
+        <td><%= learning_log_update.description %></td>
+        <td><%= learning_log_update.learning_log_id %></td>
+        <td><%= link_to 'Show', learning_log_update %></td>
+        <td><%= link_to 'Edit', edit_learning_log_update_path(learning_log_update) %></td>
+        <td><%= link_to 'Destroy', learning_log_update, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Learning Log Update', new_learning_log_update_path %>

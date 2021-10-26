@@ -1,5 +1,6 @@
 class LearningLog < ApplicationRecord
   has_many :articles
+  has_many :updates, class_name: 'LearningLogUpdate', dependent: :destroy
   validates_presence_of :title, :description
 
   after_initialize :set_default_status, :if => :new_record?

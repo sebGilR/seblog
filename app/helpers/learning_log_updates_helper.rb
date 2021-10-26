@@ -1,0 +1,2 @@
+module LearningLogUpdatesHelper
+end
