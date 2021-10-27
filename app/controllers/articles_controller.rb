@@ -12,10 +12,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/search
   def search
-    # @articles = Article.search(params[:q]).records
     @articles = Article.search(query_body(params[:q])).records
+
     render :index
-    # render action: "index"
   end
 
   # GET /articles/new
