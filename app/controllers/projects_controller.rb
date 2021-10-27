@@ -10,6 +10,12 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def search
+    @projects = Project.search(query_body).records
+
+    render :index
+  end
+
   # GET /projects/new
   def new
     @project = Project.new
@@ -57,13 +63,17 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name, :description, :demo_link, :repo_link)
-    end
+  # Only allow a list of trusted parameters through.
+  def project_params
+    params.require(:project).permit(:name, :description, :demo_link, :repo_link)
+  end
+
+  def query_body
+    { query: { query_string: { query: "*#{params[:q]}*", fields: ["name", "description"] } } }
+  end
 end

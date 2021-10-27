@@ -11,6 +11,12 @@
     </tr>
   </thead>
 
+  <%= form_tag search_learning_logs_path, method: 'get' do %>
+    <%= label_tag :query %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag :search %>
+  <% end %>
+
   <tbody>
     <% @learning_logs.each do |learning_log| %>
       <tr>
@@ -27,3 +33,4 @@
 <br>
 
 <%= link_to 'New Learning Log', new_learning_log_path %>
+<%= link_to 'All Learning Logs', learning_logs_path if params[:q] %>

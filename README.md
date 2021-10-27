@@ -12,7 +12,7 @@ As an admin I can :
 - Draft/publish articles [MVP] ✓
 - Categorize articles
 - See article stats: views, comments, reading time
-- Search for articles
+- Search for articles [MVP] ✓
 - Filter articles by category
 - Approve/reject article comments
 - Link articles to learning projects [MVP] ✓
@@ -34,6 +34,7 @@ As an admin I can:
 - Perform CRUD operations on learning logs [MVP] ✓
 - Draft/publish logs [MVP] ✓
 - Post updates for a learning log [MVP] ✓
+- Search for learning logs [MVP] ✓
 - Flag updates as blockers or milestones
 - Get suggestions to link articles based on title keywords
 - Tick a checkbox to share to [linkedin](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin)
@@ -52,6 +53,7 @@ As an admin user I can:
 - Draft/Publish projects [MVP] ✓
 - Link learning logs to projects [MVP] ✓
 - Add project updates [MVP] ✓
+- Search for Projects [MVP] ✓
 - Tick a checkbox to share to [linkedin](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin)
 
 As a user I can:

@@ -10,6 +10,13 @@ class LearningLogsController < ApplicationController
   def show
   end
 
+  # GET /articles/search
+  def search
+    @learning_logs = LearningLog.search(query_body).records
+
+    render :index
+  end
+
   # GET /learning_logs/new
   def new
     @learning_log = LearningLog.new
@@ -57,13 +64,17 @@ class LearningLogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_learning_log
-      @learning_log = LearningLog.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_learning_log
+    @learning_log = LearningLog.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def learning_log_params
-      params.require(:learning_log).permit(:title, :description, :article)
-    end
+  # Only allow a list of trusted parameters through.
+  def learning_log_params
+    params.require(:learning_log).permit(:title, :description, :article)
+  end
+
+  def query_body
+    { query: { query_string: { query: "*#{params[:q]}*", fields: ["title", "description"] } } }
+  end
 end

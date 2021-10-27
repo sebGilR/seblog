@@ -12,6 +12,14 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+  
+  <hr>
+
+  <%= form_tag search_projects_path, method: 'get' do %>
+    <%= label_tag :query %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag :search %>
+  <% end %>
 
   <tbody>
     <% @projects.each do |project| %>
@@ -31,3 +39,4 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+<%= link_to 'All Projects', projects_path if params[:q] %>
