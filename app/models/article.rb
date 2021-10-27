@@ -1,10 +1,12 @@
 class Article < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   belongs_to :learning_log, optional: true
 
   validates_presence_of :title, :text
 
   after_initialize :set_default_status, :if => :new_record?
-
   enum status: [:draft, :published]
 
 

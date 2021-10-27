@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'articles#index'
+  resources :articles do
+    collection { get :search }
+  end
   resources :project_updates
   resources :projects
   resources :learning_log_updates

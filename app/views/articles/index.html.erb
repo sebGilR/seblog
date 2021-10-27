@@ -13,6 +13,16 @@
     </tr>
   </thead>
 
+  <hr>
+
+  <%= form_tag search_articles_path, method: 'get' do %>
+    <%= label_tag :query %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag :search %>
+  <% end %>
+
+  <hr>
+
   <tbody>
     <% @articles.each do |article| %>
       <tr>
@@ -31,3 +41,4 @@
 <br>
 
 <%= link_to 'New Article', new_article_path %>
+<%= link_to 'All Articles', articles_path if params[:q] %>

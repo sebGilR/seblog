@@ -265,6 +265,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   database_cleaner-active_record (~> 2.0)
   devise (~> 4.8)
+  elasticsearch
   elasticsearch-model (~> 7.2)
   elasticsearch-rails (~> 7.2)
   factory_bot_rails (~> 6.2)

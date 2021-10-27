@@ -10,6 +10,14 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  # GET /articles/search
+  def search
+    # @articles = Article.search(params[:q]).records
+    @articles = Article.search(query_body(params[:q])).records
+    render :index
+    # render action: "index"
+  end
+
   # GET /articles/new
   def new
     @article = Article.new
@@ -57,13 +65,18 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :text, :likes, :status)
-    end
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title, :text, :likes, :status)
+  end
+  
+  def query_body(string)
+    { query: { query_string: { query: "*#{params[:q]}*", fields: ["title", "text"] } } }
+  end
+  
 end
