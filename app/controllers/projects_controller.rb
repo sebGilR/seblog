@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    @projects = Project.search(query_body).records
+    @projects = Project.where('name LIKE ? OR description LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
 
     render :index
   end
@@ -71,9 +71,5 @@ class ProjectsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def project_params
     params.require(:project).permit(:name, :description, :demo_link, :repo_link)
-  end
-
-  def query_body
-    { query: { query_string: { query: "*#{params[:q]}*", fields: ["name", "description"] } } }
   end
 end

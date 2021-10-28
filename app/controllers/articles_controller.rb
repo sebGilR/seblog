@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/search
   def search
-    @articles = Article.search(query_body).records
+    @articles = Article.where('title LIKE ? OR text LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
 
     render :index
   end
@@ -73,9 +73,4 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :text, :likes, :status)
   end
-  
-  def query_body
-    { query: { query_string: { query: "*#{params[:q]}*", fields: ["title", "text"] } } }
-  end
-  
 end

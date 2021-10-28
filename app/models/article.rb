@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-  include Searchable
   include Publishable
   belongs_to :learning_log, optional: true
 
