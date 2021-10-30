@@ -65,7 +65,8 @@ As a user I can:
 
 ### Might use these
 
-- <https://www.npmjs.com/package/react-aws-s3>
+- https://www.npmjs.com/package/react-aws-s3
+- [Searchkick](https://github.com/ankane/searchkick) - [Demo](https://www.youtube.com/watch?v=BDSa_tCfjNg&ab_channel=amplemarket)
 
 ### May do
 

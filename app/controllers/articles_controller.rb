@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    @articles = Article.all
+    @articles = if params[:q].present?
+      Article.search(search_query)
+    else
+      Article.published
+    end
   end
 
   def show
@@ -36,13 +40,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     head :no_content
-  end
-
-  
-  def search
-    @articles = Article.where('title LIKE ? OR text LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
-
-    render :index
   end
 
   private

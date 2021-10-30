@@ -50,3 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.8"
 gem "jsonapi-serializer", "~> 2.2"
+
+gem "searchkick", "~> 4.6"
