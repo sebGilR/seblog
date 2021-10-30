@@ -2,24 +2,17 @@ class LearningLogsController < ApplicationController
   before_action :set_learning_log, only: %i[ show edit update destroy ]
 
   def index
-    @learning_logs = LearningLog.all
+    render json: LearningLogSerializer.new(LearningLog.all), status: :ok
   end
 
   def show
-  end
-
-  def new
-    @learning_log = LearningLog.new
-  end
-
-  def edit
   end
 
   def create
     @learning_log = LearningLog.new(learning_log_params)
 
     if @learning_log.save
-      render json: @learning_log, status: :created
+      render json: LearningLogSerializer.new(@learning_log), status: :created
     else
       render json: { errors: @learning_log.errors }, status: :unprocessable_entity
     end
@@ -27,7 +20,7 @@ class LearningLogsController < ApplicationController
 
   def update
     if @learning_log.update(learning_log_params)
-      render json: @learning_log, status: :ok
+      render json: LearningLogSerializer.new(@learning_log), status: :ok
     else
       render json: { errors: @learning_log.errors }, status: :unprocessable_entity
     end
@@ -36,12 +29,6 @@ class LearningLogsController < ApplicationController
   def destroy
     @learning_log.destroy
     head :no_content
-  end
-
-  def search
-    @learning_logs = LearningLog.where('title LIKE ? OR description LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
-
-    render :index
   end
 
   private

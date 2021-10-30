@@ -9,13 +9,6 @@ class ProjectUpdatesController < ApplicationController
   def show
   end
 
-  def new
-    @project_update = ProjectUpdate.new
-  end
-
-  def edit
-  end
-
   def create
     @project_update = ProjectUpdate.new(project_update_params)
 

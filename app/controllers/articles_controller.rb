@@ -3,28 +3,19 @@ class ArticlesController < ApplicationController
 
   def index
     query = params[:q]
-    @articles = if query.present?
-      Article.search(query)
-    else
-      Article.published
-    end
+    @articles = query.present? ? Article.search(query) : Article.published
+
+    render json:ArticleSerializer.new(@articles), status: :ok
   end
 
   def show
-  end
-
-  def new
-    @article = Article.new
-  end
-
-  def edit
   end
 
   def create
     @article = Article.new(article_params)
 
     if @article.save
-      render json: @article, status: :ok
+      render json: ArticleSerializer.new(@article), status: :ok
     else
       render json: { errors: @article.errors }, status: :unprocessable_entity
     end
@@ -32,7 +23,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      render json: @article , status: :ok
+      render json: ArticleSerializer.new(@article), status: :ok
     else
       render json: { errors: @article.errors }, status: :unprocessable_entity
     end
