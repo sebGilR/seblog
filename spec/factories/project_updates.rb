@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project_update do
     description { "MyText" }
-    project { nil }
+    association :project 
   end
 end
