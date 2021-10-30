@@ -2,8 +2,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    @articles = if params[:q].present?
-      Article.search(search_query)
+    query = params[:q]
+    @articles = if query.present?
+      Article.search(query)
     else
       Article.published
     end

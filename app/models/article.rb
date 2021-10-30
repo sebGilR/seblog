@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  searchkick
+  searchkick word_middle: ['title^2', :text] 
   include Publishable
 
   belongs_to :learning_log, optional: true
@@ -10,7 +10,12 @@ class Article < ApplicationRecord
     unless options.empty?
       super(query, options)
     else
-      super(query, fields: ['title^2', :text], where: { published: true })
+      options = {
+        fields: ['title^2', :text],
+        match: :word_middle,
+        where: { published: true }
+      }
+      super(query, options)
     end
   end
 end
