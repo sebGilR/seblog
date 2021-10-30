@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   subject { build(:article) }
 
+  it { should belong_to(:learning_log).optional(true) }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:text) }
+
   describe '#draft?' do
     it 'should initially be true' do
       expect(subject.draft?).to be true
