@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'articles#index'
+  root to: 'admin/articles#index'
 
   devise_for :users #, defaults: { format: :json }
 
