@@ -1,9 +1,9 @@
-class ProjectUpdatesController < ApplicationController
+class Api::ProjectUpdatesController < ApplicationController
   before_action :set_project_update, only: %i[ show edit update destroy ]
   before_action :set_project_updates, only: %i[ index ]
 
   def index
-    @project_updates
+    render json: @project_updates
   end
 
   def show

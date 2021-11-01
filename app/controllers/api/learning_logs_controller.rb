@@ -1,4 +1,4 @@
-class LearningLogsController < ApplicationController
+class Api::LearningLogsController < ApplicationController
   before_action :set_learning_log, only: %i[ show edit update destroy ]
 
   def index

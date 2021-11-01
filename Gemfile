@@ -32,6 +32,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.19"
   gem "database_cleaner-active_record", "~> 2.0"
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -50,5 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.8"
 gem "jsonapi-serializer", "~> 2.2"
-
 gem "searchkick", "~> 4.6"
+gem "devise-jwt", "~> 0.9.0"
