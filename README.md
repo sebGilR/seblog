@@ -7,7 +7,7 @@ The backend for my website
 **Blog API**
 As an admin I can :
 
-- Log in to an admin dashboard `[MVP][UI]`
+- Log in to an admin dashboard `[MVP][UI]` ✓
 - Perform CRUD operations on articles `[MVP]` ✓
 - Draft/publish articles `[MVP]` ✓
 - Categorize articles
