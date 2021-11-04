@@ -1,10 +1,10 @@
-<%= form_with(model: learning_log_update) do |form| %>
-  <% if learning_log_update.errors.any? %>
+<%= form_with(model: learning_log_entry) do |form| %>
+  <% if learning_log_entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(learning_log_update.errors.count, "error") %> prohibited this learning_log_update from being saved:</h2>
+      <h2><%= pluralize(learning_log_entry.errors.count, "error") %> prohibited this learning_log_entry from being saved:</h2>
 
       <ul>
-        <% learning_log_update.errors.each do |error| %>
+        <% learning_log_entry.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

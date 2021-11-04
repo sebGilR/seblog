@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  width: 100%;
+  justify-items: flex-end;
+  list-style: none;
+
+  li {
+    margin-left: 1rem;
+    a {
+      color: #000;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

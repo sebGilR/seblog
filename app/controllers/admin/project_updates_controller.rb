@@ -1,45 +1,47 @@
-class Api::ProjectUpdatesController < ApplicationController
+class Admin::ProjectUpdatesController < ApplicationController
   before_action :set_project_update, only: %i[ show edit update destroy ]
-  before_action :set_project_updates, only: %i[ index ]
 
   def index
-    render json: @project_updates
+    @project_updates = ProjectUpdate.all
   end
 
   def show
   end
 
+  def new
+    @project_update = ProjectUpdate.new
+  end
+  
+  def edit
+  end
+
   def create
     @project_update = ProjectUpdate.new(project_update_params)
 
-    respond_to do |format|
-      if @project_update.save
-        render json: @project_update, status: :created
-      else
-        render json: { errors: @project_update.errors }, status: :unprocessable_entity
-      end
+    if @project_update.save
+      redirect_to @project_update, notice: 'Project update was successfully created.'
+    else
+      flash[:error] = @project_update.errors.full_messages.join(', ')
+      render :new
     end
   end
 
   def update
     if @project_update.update(project_update_params)
-      render json: @project_update, status: :ok
+      redirect_to @project_update, notice: 'Project update was successfully updated.'
     else
-      render json: { errors: @project_update.errors }, status: :unprocessable_entity
+      flash[:error] = @project_update.errors.full_messages.join(', ')
+      render :edit
     end
   end
 
   def destroy
     @project_update.destroy
-    head :no_content
+    redirect_to project_updates_url, notice: 'Project update was successfully destroyed.'
   end
 
   private
-  
-  def set_project_updates
-    @project_updates = ProjectUpdate.where(project_id: params[:project_id])
-  end
-  
+    
   def set_project_update
     @project_update = ProjectUpdate.find(params[:id])
   end

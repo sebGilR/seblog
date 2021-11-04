@@ -15,7 +15,7 @@ class Api::ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      render json: ArticleSerializer.new(@article), status: :ok
+      render json: ArticleSerializer.new(@article), status: :created
     else
       render json: { errors: @article.errors }, status: :unprocessable_entity
     end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @learning_log_entry.description %>
+</p>
+
+<p>
+  <strong>Learning log:</strong>
+  <%= @learning_log_entry.learning_log_id %>
+</p>
+
+<%= link_to 'Edit', edit_learning_log_entry_path(@learning_log_entry) %> |
+<%= link_to 'Back', learning_log_entries_path %>

@@ -1,9 +1,8 @@
 class Api::ProjectUpdatesController < ApplicationController
   before_action :set_project_update, only: %i[ show edit update destroy ]
-  before_action :set_project_updates, only: %i[ index ]
 
   def index
-    render json: @project_updates
+    render json: ProjectUpdate.where(project_id: params[:project_id])
   end
 
   def show
@@ -35,11 +34,7 @@ class Api::ProjectUpdatesController < ApplicationController
   end
 
   private
-  
-  def set_project_updates
-    @project_updates = ProjectUpdate.where(project_id: params[:project_id])
-  end
-  
+    
   def set_project_update
     @project_update = ProjectUpdate.find(params[:id])
   end

@@ -1,37 +1,44 @@
-class Api::ArticlesController < ApplicationController
+class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
     query = params[:q]
-    @articles = query.present? ? Article.search(query) : Article.published
-
-    render json:ArticleSerializer.new(@articles), status: :ok
+    @articles = query.present? ? Article.search(query) : Article.all
   end
 
   def show
+  end
+
+  def new
+    @article = Article.new
+  end
+  
+  def edit
   end
 
   def create
     @article = Article.new(article_params)
 
     if @article.save
-      render json: ArticleSerializer.new(@article), status: :ok
+      redirect_to @article, notice: 'Article was successfully created.'
     else
-      render json: { errors: @article.errors }, status: :unprocessable_entity
+      flash.now[:alert] = @article.errors.full_messages.join(', ')
+      render :new
     end
   end
 
   def update
     if @article.update(article_params)
-      render json: ArticleSerializer.new(@article), status: :ok
+      redirect_to @article, notice: 'Article was successfully updated.'
     else
-      render json: { errors: @article.errors }, status: :unprocessable_entity
+      flash.now[:alert] = @article.errors.full_messages.join(', ')
+      render :edit
     end
   end
 
   def destroy
     @article.destroy
-    head :no_content
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
   private

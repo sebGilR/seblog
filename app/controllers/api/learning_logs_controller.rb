@@ -38,6 +38,6 @@ class Api::LearningLogsController < ApplicationController
   end
 
   def learning_log_params
-    params.require(:learning_log).permit(:title, :description, :article)
+    params.require(:learning_log).permit(:title, :description, :article, :status)
   end
 end

@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.text_area :text %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.select :status, [["Draft", "draft"], ["Published", "published"]] %>
   </div>
 
   <div class="actions">

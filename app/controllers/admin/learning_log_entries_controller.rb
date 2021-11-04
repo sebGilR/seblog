@@ -1,9 +1,8 @@
-class Api::LearningLogEntriesController < ApplicationController
+class Admin::LearningLogEntriesController < ApplicationController
   before_action :set_learning_log_entry, only: %i[ show edit update destroy ]
 
   def index
-    @learning_log_entries = LearningLogEntry.where(learning_log_id: params[:learning_log_id])
-    render json: @learning_log_entries, status: :ok
+    @learning_log_entries = LearningLogEntry.all
   end
 
   def show
@@ -20,23 +19,25 @@ class Api::LearningLogEntriesController < ApplicationController
     @learning_log_entry = LearningLogEntry.new(learning_log_entry_params)
 
     if @learning_log_entry.save
-      render json: @learning_log_entry, status: :created
+      redirect_to @learning_log_entry, notice: 'Learning log entry was successfully created.'
     else
-      render json: { errors: @learning_log_entry.errors }, status: :unprocessable_entity
+      flash[:error] = @learning_log_entry.errors.full_messages.join(', ')
+      render :new
     end
   end
 
   def update
     if @learning_log_entry.update(learning_log_entry_params)
-      render json: @learning_log_entry, status: :ok
+      redirect_to @learning_log_entry, notice: 'Learning log entry was successfully updated.'
     else
-      render json: { errors: @learning_log_entry.errors }, status: :unprocessable_entity
+      flash[:error] = @learning_log_entry.errors.full_messages.join(', ')
+      render :edit
     end
   end
 
   def destroy
     @learning_log_entry.destroy
-    head :no_content
+    redirect_to learning_log_entries_url, notice: 'Learning log entry was successfully destroyed.'
   end
 
   private

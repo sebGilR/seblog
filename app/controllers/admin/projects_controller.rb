@@ -1,34 +1,43 @@
-class Api::ProjectsController < ApplicationController
+class Admin::ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
   def index
-    render json: ProjectSerializer.new(Project.all), status: :ok
+    @projects = Project.all
   end
 
   def show
+  end
+
+  def new
+    @project = Project.new
+  end
+  
+  def edit
   end
 
   def create
     @project = Project.new(project_params)
 
     if @project.save
-      render json: ProjectSerializer.new(@project), status: :created
+      redirect_to @project, notice: 'Project was successfully created.'
     else
-      render json: { errors: @project.errors }, status: :unprocessable_entity
+      flash[:error] = @project.errors.full_messages.join(', ')
+      render :new
     end
   end
 
   def update
     if @project.update(project_params)
-      render json:ProjectSerializer.new(@project), status: :ok
+      redirect_to @project, notice: 'Project was successfully updated.'
     else
-      render json: { errors: @project.errors }, status: :unprocessable_entity
+      flash[:error] = @project.errors.full_messages.join(', ')
+      render :edit
     end
   end
 
   def destroy
     @project.destroy
-    head :no_content
+    redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
   private
@@ -38,6 +47,6 @@ class Api::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :demo_link, :repo_link)
+    params.require(:project).permit(:name, :description, :demo_link, :repo_link, :status)
   end
 end
