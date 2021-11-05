@@ -14,7 +14,7 @@
   <tbody>
     <% @learning_log_entries.each do |learning_log_entry| %>
       <tr>
-        <td><%= learning_log_entry.description %></td>
+        <td><%= learning_log_entry.content %></td>
         <td><%= learning_log_entry.learning_log_id %></td>
         <td><%= link_to 'Show', learning_log_entry %></td>
         <td><%= link_to 'Edit', edit_learning_log_entry_path(learning_log_entry) %></td>
