@@ -53,5 +53,6 @@ gem "devise", "~> 4.8"
 gem "jsonapi-serializer", "~> 2.2"
 gem "searchkick", "~> 4.6"
 gem "devise-jwt", "~> 0.9.0"
-
 gem "rack-cors", "~> 1.1"
+
+gem "rubocop-faker", "~> 1.1"

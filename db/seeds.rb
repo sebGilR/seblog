@@ -7,18 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 STATUSES = %w(draft published)
 
-# 500.times do
-#   Project.create(name: Faker::Company.name, description: Faker::Lorem.paragraph, status: STATUSES.sample)
-#   ProjectUpdate.create(description: Faker::Lorem.paragraph, project: Project.all.sample)
-#   LearningLog.create(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph, status: STATUSES.sample, project_id: Project.all.sample)
-#   LearningLogEntry.create(content: Faker::Lorem.paragraph, learning_log_id: LearningLog.all.sample)
-#   Article.create(title: Faker::Lorem.sentence, text: Faker::Lorem.paragraphs(5).join("\n"), status: STATUSES.sample, learning_log_id: LearningLog.all.sample)
-# end
+Article.delete_all
+ProjectUpdate.delete_all
+LearningLogEntry.delete_all
+LearningLog.delete_all
+Project.delete_all
 
-500.times do
-  # Project.create(name: Faker::Company.name, description: Faker::Lorem.paragraph, status: STATUSES.sample)
-  # ProjectUpdate.create(description: Faker::Lorem.paragraph, project: Project.all.sample)
-  # LearningLog.create(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph, status: STATUSES.sample, project_id: Project.all.sample)
-  LearningLogEntry.create(content: Faker::Lorem.paragraph, learning_log_id: LearningLog.all.sample)
-  # Article.create(title: Faker::Lorem.sentence, text: Faker::Lorem.paragraphs(5).join("\n"), status: STATUSES.sample, learning_log_id: LearningLog.all.sample)
+100.times do
+  Project.create(name: Faker::Company.name, description: Faker::Lorem.paragraph, status: STATUSES.sample)
+  ProjectUpdate.create(description: Faker::Lorem.paragraph, project: Project.all.sample)
+  LearningLog.create(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph, status: STATUSES.sample, project_id: Project.all.sample)
+  LearningLogEntry.create(content: Faker::Lorem.paragraph, learning_log_id: rand(1..LearningLog.count))
+  Article.create(title: Faker::Lorem.sentence, text: Faker::Lorem.paragraphs(number: 20).join("\n"), status: STATUSES.sample, learning_log_id: LearningLog.all.sample)
 end
